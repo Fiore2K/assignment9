@@ -13,7 +13,7 @@
 
     <servlet>
         <servlet-name>ServletForwardingExample</servlet-name>
-        <servlet-class>edu.uml.kfiore.servlet.MoodSurvey</servlet-class>
+        <servlet-class>edu.uml.kfiore.servlet.StockSearchServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

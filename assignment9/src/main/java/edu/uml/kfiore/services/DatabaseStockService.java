@@ -183,6 +183,11 @@ class DatabaseStockService implements StockService {
         return stockQuotes;
     }
 
+    @Override
+    public List<StockQuote> getQuote(String symbol, String dateStart, String dateEnd) throws StockServiceException {
+        return null;
+    }
+
     /**
      * Returns true of the currentStockQuote has a date that is later by the time
      * specified in the interval value from the previousStockQuote time.

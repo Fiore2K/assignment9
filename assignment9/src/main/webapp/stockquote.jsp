@@ -15,9 +15,9 @@ Stock Quote Form <br>
 
     <label for="symbol">Please select your stock symbol:  </label>
     <select id="symbol" name="symbol">
-        <option value="APPL">APPL</option>
-        <option value="GOOG">GOOG</option>
-        <option value="AMZN">AMZN</option>
+        APPL <input type="checkbox" name="APPL" title="APPL">
+        GOOG <input type="checkbox" name="GOOG" title="GOOG">
+        AMZN <input type="checkbox" name="AMZN" title="AMZN">
     </select>
 
     <br>

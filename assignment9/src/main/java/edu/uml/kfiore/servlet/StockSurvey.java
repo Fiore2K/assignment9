@@ -1,6 +1,6 @@
 package edu.uml.kfiore.servlet;
 
-import edu.uml.kfiore.model.Mood;
+import edu.uml.kfiore.model.Symbol;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -15,29 +15,37 @@ import java.io.IOException;
  * Simple Example of how a servlet can access form submission data
  * and act on it accordingly.
  */
-public class MoodSurvey extends HttpServlet {
+public class StockSurvey extends HttpServlet {
 
-    private static final String SAD_PARAMETER_KEY = "sad";
-    private static final String HAPPY_PARAMETER_KEY = "happy";
+    private static final String APPLE_PARAMETER_KEY = "APPL";
+    private static final String GOOGLE_PARAMETER_KEY = "GOOG";
+    private static final String AMAZON_PARAMETER_KEY = "AMZN";
     private static final String CHECK_BOX_IS_CHECKED_VALUE = "on";
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
 
 
-        String sad = request.getParameter(SAD_PARAMETER_KEY);
-        String happy = request.getParameter(HAPPY_PARAMETER_KEY);
-        boolean isSad = false;
+        String apple = request.getParameter(APPLE_PARAMETER_KEY);
+        String google = request.getParameter(GOOGLE_PARAMETER_KEY);
+        String amazon = request.getParameter(AMAZON_PARAMETER_KEY);
 
+        boolean isApple = false;
         // happy and sad will be null, if not se to 'on' when selected.
-        if (sad!= null && sad.equals(CHECK_BOX_IS_CHECKED_VALUE)) {
-            isSad = true;
+        if (apple!= null && apple.equals(CHECK_BOX_IS_CHECKED_VALUE)) {
+            isApple = true;
         }
 
-        Boolean isHappy = false;
-        if (happy!= null && happy.equals(CHECK_BOX_IS_CHECKED_VALUE)) {
-            isHappy = true;
+        boolean isGoogle = false;
+        if (google!= null && google.equals(CHECK_BOX_IS_CHECKED_VALUE)) {
+            isGoogle = true;
         }
+
+        boolean isAmazon = false;
+        if (amazon!= null && amazon.equals(CHECK_BOX_IS_CHECKED_VALUE)) {
+            isAmazon = true;
+        }
+
         HttpSession session = request.getSession();
 
         /* Here is where use put an instance of Mood in the session.
@@ -50,8 +58,8 @@ public class MoodSurvey extends HttpServlet {
          * request and not the entire session.
          *
          */
-        Mood mood = new Mood(isHappy, isSad);
-        session.setAttribute("mood", mood);
+        Symbol symbol = new Symbol(isApple, isGoogle, isAmazon);
+        session.setAttribute("symbol", symbol);
 
         /* here is how a servlet can 'forward' to a specific JSP page
          * NOTE: you could easily have conditional code here that
@@ -75,7 +83,7 @@ public class MoodSurvey extends HttpServlet {
 
         ServletContext servletContext = getServletContext();
         RequestDispatcher dispatcher =
-                servletContext.getRequestDispatcher("/moodResponse.jsp");
+                servletContext.getRequestDispatcher("/stockquoteResponse.jsp");
         dispatcher.forward(request, response);
 
     }

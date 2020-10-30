@@ -25,4 +25,6 @@ public class ServiceFactory {
     public static  UserService getUserService() {
         return new DatabaseUserService();
     }
+
+    public static StockService getInstance() { return new DatabaseStockService(); }
 }

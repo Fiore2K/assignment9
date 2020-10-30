@@ -4,6 +4,7 @@ import edu.uml.kfiore.model.StockQuote;
 import edu.uml.kfiore.util.Interval;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,4 +39,5 @@ public interface StockService {
      */
     List<StockQuote> getQuote(String symbol, Calendar from, Calendar until, Interval interval) throws StockServiceException;
 
+    List<StockQuote> getQuote(String symbol, String dateStart, String dateEnd) throws StockServiceException;
 }
