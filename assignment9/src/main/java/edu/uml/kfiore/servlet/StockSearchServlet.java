@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class StockSearchServlet extends HttpServlet {
@@ -26,13 +28,14 @@ public class StockSearchServlet extends HttpServlet {
         String endDate = request.getParameter("end_date");
         List<StockQuote> stockQuoteList = null;
         try {
-            stockQuoteList = stockService.getQuote(symbol, startDate, endDate);
+            stockQuoteList = stockService.getQuote(symbol, new Date(startDate), new Date(endDate));
         } catch (StockServiceException e) {
             e.printStackTrace();
         }
 
         HttpSession session = request.getSession();
-        session.setAttribute("quotes", stockQuoteList);
+        assert stockQuoteList != null;
+        session.setAttribute("list", new ArrayList());
 
         ServletContext servletContext = getServletContext();
         RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/stockquoteResults.jsp");

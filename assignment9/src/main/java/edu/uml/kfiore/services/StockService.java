@@ -39,5 +39,5 @@ public interface StockService {
      */
     List<StockQuote> getQuote(String symbol, Calendar from, Calendar until, Interval interval) throws StockServiceException;
 
-    List<StockQuote> getQuote(String symbol, String dateStart, String dateEnd) throws StockServiceException;
+    List<StockQuote> getQuote(String symbol, Date startDate, Date endDate) throws StockServiceException;
 }

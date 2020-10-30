@@ -83,7 +83,7 @@ public class StockSurvey extends HttpServlet {
 
         ServletContext servletContext = getServletContext();
         RequestDispatcher dispatcher =
-                servletContext.getRequestDispatcher("/stockquoteResponse.jsp");
+                servletContext.getRequestDispatcher("/stockquoteResults.jsp");
         dispatcher.forward(request, response);
 
     }

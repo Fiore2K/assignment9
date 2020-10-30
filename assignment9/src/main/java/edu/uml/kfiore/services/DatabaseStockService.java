@@ -55,6 +55,7 @@ class DatabaseStockService implements StockService {
         return stockQuote;
     }
 
+
     /**
      * Get a historical list of stock quotes for the provide symbol
      *
@@ -184,7 +185,7 @@ class DatabaseStockService implements StockService {
     }
 
     @Override
-    public List<StockQuote> getQuote(String symbol, String dateStart, String dateEnd) throws StockServiceException {
+    public List<StockQuote> getQuote(String symbol, Date date, Date date1) {
         return null;
     }
 
